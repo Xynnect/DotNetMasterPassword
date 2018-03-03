@@ -355,7 +355,7 @@ namespace ConsoleMasterPassword
                 cmd.Next();
 
                 userName = cmd.CurrentArg;
-                Console.WriteLine(userName);
+                //Console.WriteLine(userName);
 
                 cmd.Next();
 
@@ -370,7 +370,7 @@ namespace ConsoleMasterPassword
                     else
                     {
                         siteName = cmd.CurrentArg;
-                        Console.WriteLine(siteName);
+                        //Console.WriteLine(siteName);
                         cmd.Next();
                     }
                 }
@@ -386,7 +386,7 @@ namespace ConsoleMasterPassword
                     {
 
                         type = ExtractTypeFromString(GetPasswordTypes(), cmd.CurrentArg);
-                        Console.WriteLine(type);
+                        //Console.WriteLine(type);
                         cmd.Next();
                     }
                 }
@@ -402,7 +402,7 @@ namespace ConsoleMasterPassword
                     {
 
                         counter = int.Parse(cmd.CurrentArg);
-                        Console.WriteLine(counter);
+                        //Console.WriteLine(counter);
                         cmd.Next();
                     }
                 }
@@ -417,7 +417,7 @@ namespace ConsoleMasterPassword
                     else
                     {
                         masterPassword = cmd.CurrentArg;
-                        Console.WriteLine(masterPassword);
+                        //Console.WriteLine(masterPassword);
                     }
                 }
 
@@ -521,7 +521,10 @@ namespace ConsoleMasterPassword
             var templateSeed = Algorithm.CalcTemplateSeed(masterkey, siteName, counter);
             var generatedPassword = Algorithm.CalcPassword(templateSeed, type);
 
+
+            System.IO.File.WriteAllText(Directory.GetCurrentDirectory()+"\\WriteText.txt", generatedPassword);
             Console.WriteLine(generatedPassword);
+
         }
 
         /// <summary>
